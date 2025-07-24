@@ -31,6 +31,22 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">Contact</a>
                 </li>
+
+            </ul>
+        </div>
+        <div class="d-flex ms-auto">
+            <ul class="navbar-nav pe-2">
+                <li class="nav-item">
+                    <a href="/cart" class="nav-link">
+                        <i class="fas fa-shopping-cart"></i>
+                    </a>
+                </li>
+                <li class="nav-item ps-2">
+                    <a href="/cart" class="nav-link">
+                        <i class="fa-solid fa-user"></i>
+                    </a>
+                </li>
+
             </ul>
         </div>
     </div>
