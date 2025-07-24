@@ -32,4 +32,11 @@ class ProductsRepository
             "stock" => $request->stock,
         ]);
     }
+
+    public function allParticularProducts($categoryId)
+    {
+        $products = $this->productModel::where("category_id", $categoryId)->get();
+
+        return $products;
+    }
 }
