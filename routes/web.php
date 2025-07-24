@@ -20,5 +20,9 @@ Route::view("/", "welcome")->name("welcome");
 
 Route::view("/product/add", "productAdd")->name("product.add");
 Route::post("/product/added", [\App\Http\Controllers\ProductsController::class, "add"])->name("product.added");
+Route::get("/product/cases/all/{categoryId}",[\App\Http\Controllers\ProductsController::class, "products"])->name("product.cases");
+Route::get("/product/search/cases", [\App\Http\Controllers\ProductsController::class, "search"])->name("product.search");
+Route::get("/product/chargers/all/{categoryId}", [\App\Http\Controllers\ProductsController::class, "products"])->name("product.chargers");
+Route::get("/product/headsets/all/{categoryId}", [\App\Http\Controllers\ProductsController::class, "products"])->name("product.headsets");
 
 require __DIR__.'/auth.php';
