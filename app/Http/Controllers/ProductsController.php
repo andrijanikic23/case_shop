@@ -30,7 +30,7 @@ class ProductsController extends Controller
     {
         $products = $this->productRepo->allParticularProducts($categoryId);
 
-       return view("allCases", compact("products", "categoryId"));
+       return view("allParticularProducts", compact("products", "categoryId"));
     }
 
     public function search(SearchRequest $request)
@@ -46,6 +46,15 @@ class ProductsController extends Controller
         }
 
 
-        return view("allCases", compact("products", "categoryId"));
+        return view("allParticularProducts", compact("products", "categoryId"));
+    }
+
+    public function view(ProductsModel $product)
+    {
+        $productId = $product["id"];
+        $productReviews = new ReviewsController();
+        $reviews = $productReviews->reviews($productId);
+
+        return view("particularProduct", compact("product", "reviews"));
     }
 }
