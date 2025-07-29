@@ -24,5 +24,10 @@ Route::get("/product/cases/all/{categoryId}",[\App\Http\Controllers\ProductsCont
 Route::get("/product/search/cases", [\App\Http\Controllers\ProductsController::class, "search"])->name("product.search");
 Route::get("/product/chargers/all/{categoryId}", [\App\Http\Controllers\ProductsController::class, "products"])->name("product.chargers");
 Route::get("/product/headsets/all/{categoryId}", [\App\Http\Controllers\ProductsController::class, "products"])->name("product.headsets");
+Route::get("/product/view/{product}", [\App\Http\Controllers\ProductsController::class, "view"])->name("product.view");
+
+Route::post("/review/rating", [\App\Http\Controllers\ReviewsController::class, "rate"])->name("review.stars");
+
+
 
 require __DIR__.'/auth.php';

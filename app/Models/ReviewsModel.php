@@ -10,4 +10,9 @@ class ReviewsModel extends Model
 
 
     protected $fillable = ["user_id", "product_id", "rating", "comment"];
+
+    public function user()
+    {
+        return $this->hasOne(User::class, "id", "user_id");
+    }
 }
