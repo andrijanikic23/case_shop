@@ -27,7 +27,7 @@
                             <h5 class="card-title">{{ $product["name"] }}</h5>
                             <p class="card-text">{{ $product["description"] }}</p>
                             <p class="card-text">{{ $product["price"] }}RSD</p>
-                            <a href="#" class="btn btn-primary">Add to cart</a>
+                            <a href="{{ route('product.view', ["product" => $product["id"]]) }}" class="btn btn-primary">View product</a>
                         </div>
                     </div>
                 @endforeach
