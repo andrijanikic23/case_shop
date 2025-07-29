@@ -42,7 +42,7 @@
                     </a>
                 </li>
                 <li class="nav-item ps-2">
-                    <a href="/cart" class="nav-link">
+                    <a href="{{ route('profile.edit') }}" class="nav-link">
                         <i class="fa-solid fa-user"></i>
                     </a>
                 </li>
