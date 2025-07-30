@@ -5,17 +5,23 @@
     <article class="container d-flex flex-wrap col-12 border border-5 rounded border-secondary bg-secondary" style="margin-top: 80px;">
         <img class="col-6" src="{{ $product['image_url'] }}" alt="Product image">
         <div class="d-flex flex-column col-6 p-5">
+            @if(\Illuminate\Support\Facades\Session::has("success"))
+                <p class="text-success">{{ \Illuminate\Support\Facades\Session::get("success") }}</p>
+            @endif
             <h1 class="text-white">{{ $product["name"] }}</h1>
             <h3>{{ $product["description"] }}</h3>
             <p><i class="fa-solid fa-sack-dollar"></i> Price -> {{ $product["price"] }}RSD</p>
             <p>Stock -> {{ $product["stock"] }}</p>
-            <form>
+            <form method="POST" action="{{ route('cart.add') }}">
                 {{ csrf_field() }}
                 <label for="quantity">Quantity -> </label>
                 <input type="number" name="quantity" placeholder="Enter desired quantity">
                 <br>
-                <input type="hidden" value="{{ $product['id'] }}">
+                <input type="hidden" name="productId" value="{{ $product['id'] }}">
                 <br>
+                <input type="hidden" name="singleProductPrice" value="{{ $product['price'] }}">
+                <input type="hidden" name="imageUrl" value="{{ $product['image_url'] }}">
+                <input type="hidden" name="productName" value="{{ $product['name'] }}">
                 <button class="btn btn-primary">Add to cart</button>
             </form>
 

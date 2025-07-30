@@ -28,6 +28,9 @@ Route::get("/product/view/{product}", [\App\Http\Controllers\ProductsController:
 
 Route::post("/review/rating", [\App\Http\Controllers\ReviewsController::class, "rate"])->name("review.stars");
 
+Route::post("/cart/added", [\App\Http\Controllers\CartController::class, "addProduct"])->name("cart.add");
+Route::get("/cart/overview", [\App\Http\Controllers\CartController::class, "display"])->name("cart.display");
+
 
 
 require __DIR__.'/auth.php';
