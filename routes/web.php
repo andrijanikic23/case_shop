@@ -30,6 +30,7 @@ Route::post("/review/rating", [\App\Http\Controllers\ReviewsController::class, "
 
 Route::post("/cart/added", [\App\Http\Controllers\CartController::class, "addProduct"])->name("cart.add");
 Route::get("/cart/overview", [\App\Http\Controllers\CartController::class, "display"])->name("cart.display");
+Route::post("/cart/overview/minus-product", [\App\Http\Controllers\CartController::class, "minusCartItem"])->name("cart.minus");
 
 
 

@@ -36,4 +36,18 @@ class CartRepository
             "price" => $totalPrice
         ]);
     }
+
+    public function updateCartItem($productExist, $request)
+    {
+        $quantity = $request->quantity;
+        $singleProductPrice = $request->singleProductPrice;
+        $oldProductQuantity = $productExist['quantity'];
+        $newQuantity = $oldProductQuantity + $quantity;
+        $newPrice = $singleProductPrice *$newQuantity;
+
+        $productExist->update([
+           "quantity" => $newQuantity,
+            "price" => $newPrice,
+        ]);
+    }
 }
