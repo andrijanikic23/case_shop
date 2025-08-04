@@ -6,7 +6,7 @@
     @foreach($cartItems as $item)
         <article class="container col-8 d-flex flex-column flex-wrap bg-secondary mb-3">
             <div class="d-flex" style="gap:15px;">
-                <img class="w-30 p-3" src="{{ $item["image_url"] }}" alt="Image of iphone case">
+                <img class="w-30 p-3" style="height:200px; width:200px;" src="{{ $item["image_url"] }}" alt="Image of iphone case">
                 <div class="d-flex flex-column flex-wrap justify-content-center">
                     <h1>{{ $item["product_name"] }}</h1>
                     <h5>Desired quantity -> {{ $item["quantity"] }}</h5>

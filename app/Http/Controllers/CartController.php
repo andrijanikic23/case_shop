@@ -62,8 +62,15 @@ class CartController extends Controller
         $productId = $request->productId;
         CartModel::where("user_id", Auth::id())->where("product_id", $productId)->decrement("quantity");
         $quantity = CartModel::where("user_id", Auth::id())->where("product_id", $productId)->first()->quantity;
+
+        if($quantity == 0)
+        {
+            CartModel::where("user_id", Auth::id())->where("product_id", $productId)->delete();
+        }
+
         $pricePerProduct = ProductsModel::whereId($productId)->first()->price;
         $newPrice = $quantity * $pricePerProduct;
+
         CartModel::where("user_id", Auth::id())->where("product_id", $productId)->update([
             "price" => $newPrice,
         ]);
