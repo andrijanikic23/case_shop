@@ -37,7 +37,7 @@
         <div class="d-flex ms-auto">
             <ul class="navbar-nav pe-2">
                 <li class="nav-item">
-                    <a href="/cart" class="nav-link">
+                    <a href="{{ route('cart.display') }}" class="nav-link">
                         <i class="fas fa-shopping-cart"></i>
                     </a>
                 </li>
