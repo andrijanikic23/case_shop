@@ -32,6 +32,8 @@ Route::post("/cart/added", [\App\Http\Controllers\CartController::class, "addPro
 Route::get("/cart/overview", [\App\Http\Controllers\CartController::class, "display"])->name("cart.display");
 Route::post("/cart/overview/minus-product", [\App\Http\Controllers\CartController::class, "minusCartItem"])->name("cart.minus");
 
+Route::post("/order/finished", [\App\Http\Controllers\OrdersController::class, "finished"])->name("order.finished");
+
 
 
 require __DIR__.'/auth.php';

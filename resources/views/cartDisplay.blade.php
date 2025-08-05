@@ -26,6 +26,10 @@
 
     <article class="container col-8 d-flex flex-row flex-wrap bg-info p-2" style="gap: 300px;">
         <h1>Total price: {{ $totalPrice }}RSD</h1>
-        <button class="btn btn-primary col-2 fs-5">Order items</button>
+        <form method="POST" action="{{ route('order.finished') }}">
+            {{ csrf_field() }}
+            <input name="totalPrice" type="hidden" step="0.01" value="{{ $totalPrice }}">
+            <button class="btn btn-dark fs-5" style="width:200px; height:50px;">Order items</button>
+        </form>
     </article>
 @endsection

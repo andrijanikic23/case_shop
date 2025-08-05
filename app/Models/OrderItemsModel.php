@@ -9,5 +9,5 @@ class OrderItemsModel extends Model
     protected $table = "order_items";
 
 
-    protected $fillable = ["order_id", "product_id", "quantity", "price_each"];
+    protected $fillable = ["order_id", "product_id", "quantity", "price"];
 }

@@ -50,4 +50,9 @@ class CartRepository
             "price" => $newPrice,
         ]);
     }
+
+    public function dumpAllCartItems($userId)
+    {
+        $this->cartModel::where("user_id", $userId)->delete();
+    }
 }

@@ -9,6 +9,7 @@ use App\Models\ProductsModel;
 use App\Repositories\CartRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 use function Symfony\Component\String\b;
 
 class CartController extends Controller
@@ -47,10 +48,18 @@ class CartController extends Controller
 
         $cartItems = CartModel::where("user_id", $userId)->get();
 
+        if($cartItems->isEmpty())
+        {
+            return view("noCartItems");
+        }
+
         $totalPrice = 0;
+
+        Session::forget("cartItems");
 
         foreach($cartItems as $item)
         {
+            Session::push("cartItems", $item);
             $totalPrice += $item["price"];
         }
 
@@ -75,14 +84,12 @@ class CartController extends Controller
             "price" => $newPrice,
         ]);
 
-
-
         return redirect()->back();
+    }
 
-
-
-
-
+    public function emptyCart($userId)
+    {
+        $this->cartRepo->dumpAllCartItems($userId);
     }
 
 }
