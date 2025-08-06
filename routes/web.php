@@ -34,6 +34,8 @@ Route::post("/cart/overview/minus-product", [\App\Http\Controllers\CartControlle
 
 Route::post("/order/finished", [\App\Http\Controllers\OrdersController::class, "finished"])->name("order.finished");
 
+Route::view("/contact", "contact")->name("contact.info");
+
 
 
 require __DIR__.'/auth.php';
