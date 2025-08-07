@@ -1,6 +1,10 @@
 <?php
 
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\OrdersController;
+use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReviewsController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/dashboard', function () {
@@ -18,21 +22,30 @@ Route::view("/about", "about")->name("about");
 
 Route::view("/", "welcome")->name("welcome");
 
+
+
+Route::controller(ProductsController::class)->prefix("product")->group(function(){
+    Route::post("/added","add")->name("product.added");
+    Route::get("/cases/all/{categoryId}","products")->name("product.cases");
+    Route::get("/search/cases","search")->name("product.search");
+    Route::get("/chargers/all/{categoryId}","products")->name("product.chargers");
+    Route::get("/headsets/all/{categoryId}","products")->name("product.headsets");
+    Route::get("/view/{product}","view")->name("product.view");
+});
+
 Route::view("/product/add", "productAdd")->name("product.add");
-Route::post("/product/added", [\App\Http\Controllers\ProductsController::class, "add"])->name("product.added");
-Route::get("/product/cases/all/{categoryId}",[\App\Http\Controllers\ProductsController::class, "products"])->name("product.cases");
-Route::get("/product/search/cases", [\App\Http\Controllers\ProductsController::class, "search"])->name("product.search");
-Route::get("/product/chargers/all/{categoryId}", [\App\Http\Controllers\ProductsController::class, "products"])->name("product.chargers");
-Route::get("/product/headsets/all/{categoryId}", [\App\Http\Controllers\ProductsController::class, "products"])->name("product.headsets");
-Route::get("/product/view/{product}", [\App\Http\Controllers\ProductsController::class, "view"])->name("product.view");
 
-Route::post("/review/rating", [\App\Http\Controllers\ReviewsController::class, "rate"])->name("review.stars");
 
-Route::post("/cart/added", [\App\Http\Controllers\CartController::class, "addProduct"])->name("cart.add");
-Route::get("/cart/overview", [\App\Http\Controllers\CartController::class, "display"])->name("cart.display");
-Route::post("/cart/overview/minus-product", [\App\Http\Controllers\CartController::class, "minusCartItem"])->name("cart.minus");
+Route::post("/review/rating", [ReviewsController::class, "rate"])->name("review.stars");
 
-Route::post("/order/finished", [\App\Http\Controllers\OrdersController::class, "finished"])->name("order.finished");
+Route::controller(CartController::class)->prefix("cart")->group(function(){
+    Route::post("/added", "addProduct")->name("cart.add");
+    Route::get("/overview", "display")->name("cart.display");
+    Route::post("/overview/minus-product", "minusCartItem")->name("cart.minus");
+});
+
+
+Route::post("/order/finished", [OrdersController::class, "finished"])->name("order.finished");
 
 Route::view("/contact", "contact")->name("contact.info");
 
