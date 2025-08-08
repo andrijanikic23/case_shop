@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\JobController;
 use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\ProfileController;
@@ -48,6 +49,8 @@ Route::post("/order/finished", [OrdersController::class, "finished"])->name("ord
 
 Route::view("/contact", "contact")->name("contact.info");
 
+Route::view("/job/post", "jobPost")->name("job.post");
+Route::post("/job/posted",[JobController::class, "post"])->name("job.posted");
 Route::view("/job/openings", "jobOpenings")->name("job.openings");
 
 
