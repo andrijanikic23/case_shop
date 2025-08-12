@@ -36,4 +36,30 @@ class JobRepository
             "deadline" => $deadline,
         ]);
     }
+
+    public function searchResults($request)
+    {
+        $keyword = $request->keywords;
+        $type = $request->type;
+        $departmentId = $request->department;
+
+
+        if(isset($type) && isset($departmentId))
+        {
+            return $this->occupationsModel::where("title", "LIKE", "%$keyword%")->where("department_id", $departmentId)->where("type", $type)->get();
+        }
+        else if(isset($type))
+        {
+            return $this->occupationsModel::where("title", "LIKE", "%$keyword%")->where("type", $type)->get();
+        }
+        else if(isset($departmentId))
+        {
+            return $this->occupationsModel::where("title", "LIKE", "%$keyword%")->where("department_id", $departmentId)->get();
+        }
+        else
+        {
+            return $this->occupationsModel::where("title", "LIKE", "%$keyword%")->get();
+        }
+
+    }
 }
