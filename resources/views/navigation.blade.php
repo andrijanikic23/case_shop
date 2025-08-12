@@ -7,7 +7,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{{ route('welcome') }}">Homepage</a>
+                    <a class="nav-link active" aria-current="page" href="{{ route('welcome') }}">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('about') }}">About</a>
@@ -25,8 +25,15 @@
                     </ul>
                 </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Reviews</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="productsDropdown"
+                       role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Job
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="productsDropdown">
+                        <li><a class="dropdown-item" href="{{ route('job.openings') }}">Job openings</a></li>
+                        <li><a class="dropdown-item" href="{{ route('job.post') }}">Post a job</a></li>
+                    </ul>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('contact.info') }}">Contact</a>
