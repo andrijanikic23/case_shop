@@ -51,9 +51,11 @@ Route::view("/contact", "contact")->name("contact.info");
 
 Route::view("/job/post", "jobPost")->name("job.post");
 Route::post("/job/posted",[JobController::class, "post"])->name("job.posted");
-Route::view("/job/openings", "jobOpenings")->name("job.openings");
+Route::get("/job/openings", [JobController::class, "careers"])->name("job.openings");
+Route::post("/job/search", [JobController::class, "search"])->name("job.search");
+Route::get("/job/info", [JobController::class, "moreInfo"])->name("job.info");
 
-
+Route::post("/application/confirmed", [\App\Http\Controllers\ApplicationsController::class, "applied"])->name("application.confirmed");
 
 
 
