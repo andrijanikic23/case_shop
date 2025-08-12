@@ -32,14 +32,14 @@ class JobController extends Controller
     {
         $careers = OccupationsModel::all();
 
-        return view("jobOpenings", compact("careers"));
+        return view("jobs/jobOpenings", compact("careers"));
     }
 
     public function search(SearchJobRequest $request)
     {
         $careers = $this->jobRepo->searchResults($request);
 
-        return view("jobOpenings" , compact("careers"));
+        return view("jobs/jobOpenings" , compact("careers"));
     }
 
     public function moreInfo(JobMoreInfoRequest $request)
@@ -47,7 +47,7 @@ class JobController extends Controller
         $careerId = $request->careerId;
         $career = OccupationsModel::whereId($careerId)->first();
 
-        return view("jobInfo", compact("career"));
+        return view("jobs/jobInfo", compact("career"));
     }
 
 }

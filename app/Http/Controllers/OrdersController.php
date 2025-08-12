@@ -22,13 +22,13 @@ class OrdersController extends Controller
     {
         if(Session::has("cartItems") == false)
         {
-            return view("thankYouPage");
+            return view("cart/thankYouPage");
         }
         $userId = $this->ordersRepo->fillOrderTables($request);
 
         $deleteCartItems = new CartController();
         $deleteCartItems->emptyCart($userId);
 
-        return view("thankYouPage");
+        return view("cart/thankYouPage");
     }
 }

@@ -50,7 +50,7 @@ class CartController extends Controller
 
         if($cartItems->isEmpty())
         {
-            return view("noCartItems");
+            return view("cart/noCartItems");
         }
 
         $totalPrice = 0;
@@ -63,7 +63,7 @@ class CartController extends Controller
             $totalPrice += $item["price"];
         }
 
-        return view("cartDisplay", ["cartItems" => $cartItems, "totalPrice" => $totalPrice]);
+        return view("cart/cartDisplay", ["cartItems" => $cartItems, "totalPrice" => $totalPrice]);
     }
 
     public function minusCartItem(CartItemMinusRequest $request)

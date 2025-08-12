@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ApplicationsController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\OrdersController;
@@ -34,7 +35,7 @@ Route::controller(ProductsController::class)->prefix("product")->group(function(
     Route::get("/view/{product}","view")->name("product.view");
 });
 
-Route::view("/product/add", "productAdd")->middleware("auth", AdminMiddleware::class)->name("product.add");
+Route::view("/product/add", "products/productAdd")->middleware("auth", AdminMiddleware::class)->name("product.add");
 
 Route::post("/review/rating", [ReviewsController::class, "rate"])->name("review.stars");
 
@@ -49,13 +50,18 @@ Route::post("/order/finished", [OrdersController::class, "finished"])->name("ord
 
 Route::view("/contact", "contact")->name("contact.info");
 
-Route::view("/job/post", "jobPost")->name("job.post");
-Route::post("/job/posted",[JobController::class, "post"])->name("job.posted");
-Route::get("/job/openings", [JobController::class, "careers"])->name("job.openings");
-Route::post("/job/search", [JobController::class, "search"])->name("job.search");
-Route::get("/job/info", [JobController::class, "moreInfo"])->name("job.info");
+Route::view("/job/post", "jobs/jobPost")->middleware("auth", AdminMiddleware::class)->name("job.post");
 
-Route::post("/application/confirmed", [\App\Http\Controllers\ApplicationsController::class, "applied"])->name("application.confirmed");
+Route::controller(JobController::class)->prefix("job")->group(function(){
+    Route::post("/posted","post")->name("job.posted");
+    Route::get("/openings", "careers")->name("job.openings");
+    Route::post("/search", "search")->name("job.search");
+    Route::get("/info","moreInfo")->name("job.info");
+});
+
+
+
+Route::post("/application/confirmed", [ApplicationsController::class, "applied"])->name("application.confirmed");
 
 
 
