@@ -1,5 +1,7 @@
 @extends("layout")
 
+@section("title", "About")
+
 @section("content")
     <article class="container d-flex col-8" style="margin-top:80px;">
         <div class="p-3">

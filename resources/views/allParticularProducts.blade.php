@@ -1,5 +1,7 @@
 @extends("layout")
 
+@section("title", \App\Http\ProductsHelper::getTitle($categoryId))
+
 @section("content")
 
         <form class="container col-6" style="margin-top:80px;" method="GET" action="{{ route('product.search') }}">

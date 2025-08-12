@@ -1,6 +1,8 @@
 @php use App\Http\JobHelper; @endphp
 @extends("cartLayout")
 
+@section("title", "Job openings - MaskeShop.rs")
+
 @section("head")
     <style>
         .searchApplyButton {

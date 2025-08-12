@@ -1,6 +1,8 @@
 @php use Illuminate\Support\Facades\Session; @endphp
 @extends("layout")
 
+@section("title", "Add product - MaskeShop.rs")
+
 @section("content")
 
     <form class="container d-flex flex-column justify-content-center align-items-center"

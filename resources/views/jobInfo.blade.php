@@ -1,5 +1,6 @@
 @extends("cartLayout")
 
+@section("title", "Application - MaskeShop.rs")
 
 @section("content")
 
