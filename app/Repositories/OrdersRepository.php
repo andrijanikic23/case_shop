@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Models\OrderItemsModel;
 use App\Models\OrdersModel;
+use App\Models\ProductsModel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
@@ -45,5 +46,15 @@ class OrdersRepository
 
         return $userId;
 
+    }
+
+    public function orderStockCheck()
+    {
+        foreach(Session::get("cartItems") as $item) {
+            $productId = $item["product_id"];
+            $stock = ProductsModel::whereId($productId)->select('stock')->first();
+            dd($stock);
+            //to be continued :)
+        }
     }
 }

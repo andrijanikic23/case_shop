@@ -20,10 +20,14 @@ class OrdersController extends Controller
 
     public function finished(OrdersRequest $request)
     {
+
+        $this->ordersRepo->orderStockCheck();
+
         if(Session::has("cartItems") == false)
         {
             return view("cart/thankYouPage");
         }
+
         $userId = $this->ordersRepo->fillOrderTables($request);
 
         $deleteCartItems = new CartController();
