@@ -6,7 +6,7 @@
         <img class="col-6" src="{{ $product['image_url'] }}" alt="Product image">
         <div class="d-flex flex-column col-6 p-5">
             @if(\Illuminate\Support\Facades\Session::has("success"))
-                <p class="text-success">{{ \Illuminate\Support\Facades\Session::get("success") }}</p>
+                <p class="bg-success text-white">{{ \Illuminate\Support\Facades\Session::get("success") }}</p>
             @endif
             <h1 class="text-white">{{ $product["name"] }}</h1>
             <h3>{{ $product["description"] }}</h3>
