@@ -25,12 +25,12 @@
 
     @endforeach
 
-    <article class="container col-8 d-flex flex-row flex-wrap bg-info p-2" style="gap: 300px;">
+    <article class="container col-8 d-flex flex-row flex-wrap bg-info p-2 justify-content-around" style="gap: 300px;">
         <h1>Total price: {{ $totalPrice }}RSD</h1>
         <form method="POST" action="{{ route('order.finished') }}">
             {{ csrf_field() }}
             <input name="totalPrice" type="hidden" step="0.01" value="{{ $totalPrice }}">
-            <button class="btn btn-dark fs-5" style="width:200px; height:50px;">Order items</button>
+            <button type="submit" class="btn btn-dark fs-5" style="width:200px; height:50px;">Order items</button>
         </form>
     </article>
 @endsection
