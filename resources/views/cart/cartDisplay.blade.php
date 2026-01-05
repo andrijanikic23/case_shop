@@ -1,13 +1,22 @@
+@php use Illuminate\Support\Facades\Session; @endphp
 @extends("cartLayout")
 
 @section("title", "Cart - MaskeShop.rs")
 
 @section("content")
 
+    @if(Session::has('failure'))
+        <div class="alert alert-danger" role="alert">
+            <i class="fa-solid fa-triangle-exclamation"></i> {{ Session::get('failure') }}
+        </div>
+    @endif
+
+
     @foreach($cartItems as $item)
         <article class="container col-8 d-flex flex-column flex-wrap bg-secondary mb-3">
             <div class="d-flex" style="gap:15px;">
-                <img class="w-30 p-3" style="height:200px; width:200px;" src="{{ $item["image_url"] }}" alt="Image of iphone case">
+                <img class="w-30 p-3" style="height:200px; width:200px;" src="{{ $item["image_url"] }}"
+                     alt="Image of iphone case">
                 <div class="d-flex flex-column flex-wrap justify-content-center">
                     <h1>{{ $item["product_name"] }}</h1>
                     <h5>Desired quantity -> {{ $item["quantity"] }}</h5>
@@ -15,7 +24,8 @@
                     <form action="{{ route('cart.minus') }}" method="POST" style="display:inline;">
                         {{ csrf_field() }}
                         <input name="productId" type="hidden" value="{{ $item['product_id'] }}">
-                        <button type="submit" style="border: none; background: none; padding: 0; cursor: pointer;"><i class="fa-solid fa-square-minus fa-2x"></i></button>
+                        <button type="submit" style="border: none; background: none; padding: 0; cursor: pointer;"><i
+                                class="fa-solid fa-square-minus fa-2x"></i></button>
                     </form>
 
                 </div>
