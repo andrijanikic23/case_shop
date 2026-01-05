@@ -12,9 +12,6 @@
             <div class="carousel-item">
                 <img src="images/logo2.png" class="d-block w-100" style="height:1000px;" alt="Second slide">
             </div>
-            <div class="carousel-item">
-                <img src="images/iphone_cases_background.jpg" class="d-block w-100" style="height:1000px;" alt="Third slide">
-            </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
