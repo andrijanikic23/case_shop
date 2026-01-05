@@ -21,18 +21,20 @@ class OrdersController extends Controller
     public function finished(OrdersRequest $request)
     {
 
-        $this->ordersRepo->orderStockCheck();
+        $stockCheck = $this->ordersRepo->orderStockCheck();
 
-        if(Session::has("cartItems") == false)
-        {
+        if($stockCheck) {
+            $userId = $this->ordersRepo->fillOrderTables($request);
+
+            $deleteCartItems = new CartController();
+            $deleteCartItems->emptyCart($userId);
+
             return view("cart/thankYouPage");
         }
+        else {
+            return redirect()->back()->with('failure', 'Not  enough product in stock!');
+        }
 
-        $userId = $this->ordersRepo->fillOrderTables($request);
 
-        $deleteCartItems = new CartController();
-        $deleteCartItems->emptyCart($userId);
-
-        return view("cart/thankYouPage");
     }
 }

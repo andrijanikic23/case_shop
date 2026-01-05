@@ -52,9 +52,16 @@ class OrdersRepository
     {
         foreach(Session::get("cartItems") as $item) {
             $productId = $item["product_id"];
-            $stock = ProductsModel::whereId($productId)->select('stock')->first();
-            dd($stock);
-            //to be continued :)
+            $orderedQuantity = $item["quantity"];
+            $stock = ProductsModel::whereId($productId)->value('stock');
+            if($stock >= $orderedQuantity) {
+                $difference = $stock - $orderedQuantity;
+                ProductsModel::whereId($productId)->update(["stock" => $difference]);
+                return true;
+            }
+            else {
+                return false;
+            }
         }
     }
 }
