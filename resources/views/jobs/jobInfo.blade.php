@@ -8,15 +8,15 @@
         <div>
             <img src="{{ asset('images/logo.png') }}" style="height:200px; width:200px;">
             <div class="mt-3 d-flex flex-column" style="gap:0px;">
-                <p><i class="fa-solid fa-briefcase"></i> Type: <span class="bg-secondary rounded"> {{ $career["type"] }} </span></p>
-                <p><i class="fa-solid fa-location-dot"></i> Location: <span class="bg-secondary rounded"> {{ $career["location"] }} </span></p>
-                <p><i class="fa-solid fa-laptop"></i> Category: <span class="bg-secondary rounded">{{ \App\Http\JobHelper::departmentName($career["department_id"]) }}</span></p>
+                <p><i class="fa-solid fa-briefcase"></i> Type: <span class="bg-dark text-white rounded"> {{ $career["type"] }} </span></p>
+                <p><i class="fa-solid fa-location-dot"></i> Location: <span class="bg-dark text-white rounded"> {{ $career["location"] }} </span></p>
+                <p><i class="fa-solid fa-laptop"></i> Category: <span class="bg-dark text-white rounded">{{ \App\Http\JobHelper::departmentName($career["department_id"]) }}</span></p>
                 @if($career["salary"] !== null)
-                    <p><i class="fa-solid fa-money-bill"></i> <span class="bg-secondary rounded"> {{ $career["type"] }} </span></p>
+                    <p><i class="fa-solid fa-money-bill"></i> <span class="bg-dark text-white rounded"> {{ $career["type"] }} </span></p>
                 @else
                     <p><i class="fa-solid fa-money-bill"></i> Competitive salary</p>
                 @endif
-                <p><i class="fa-solid fa-calendar-check"></i> We accept applications until <span class="bg-secondary rounded"> {{ $career["deadline"] }} </span></p>
+                <p><i class="fa-solid fa-calendar-check"></i> We accept applications until <span class="bg-dark text-white rounded"> {{ $career["deadline"] }} </span></p>
             </div>
 
         </div>
