@@ -1,7 +1,9 @@
+@php use Illuminate\Support\Facades\Auth; @endphp
 <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top" style="background-color: black">
     <div class="container-fluid">
         <a class="navbar-brand" href="{{ route('welcome') }}">Maskeshop.rs</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
@@ -19,20 +21,28 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="productsDropdown">
                         <li><a class="dropdown-item" href="{{ route('product.add') }}">Add product</a></li>
-                        <li><a class="dropdown-item" href="{{ route('product.cases', ['categoryId' => 1]) }}">iPhone Cases</a></li>
-                        <li><a class="dropdown-item" href="{{ route('product.chargers', ['categoryId' => 2]) }}">Chargers</a></li>
-                        <li><a class="dropdown-item" href="{{ route('product.headsets', ['categoryId' => 3]) }}">Headphones</a></li>
+                        <li><a class="dropdown-item" href="{{ route('product.cases', ['categoryId' => 1]) }}">iPhone
+                                Cases</a></li>
+                        <li><a class="dropdown-item" href="{{ route('product.chargers', ['categoryId' => 2]) }}">Chargers</a>
+                        </li>
+                        <li><a class="dropdown-item" href="{{ route('product.headsets', ['categoryId' => 3]) }}">Headphones</a>
+                        </li>
                     </ul>
                 </li>
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="productsDropdown"
                        role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Job
+                        Career
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="productsDropdown">
-                        <li><a class="dropdown-item" href="{{ route('job.openings') }}">Job openings</a></li>
-                        <li><a class="dropdown-item" href="{{ route('job.post') }}">Post a job</a></li>
+                        <li><a class="dropdown-item" href="{{ route('job.openings') }}">Open positions</a></li>
+                        @auth
+                            @if(Auth::user()->role == "admin")
+                                <li><a class="dropdown-item" href="{{ route('job.post') }}">New ad</a></li>
+                            @endif
+                        @endauth
+
                     </ul>
                 </li>
                 <li class="nav-item">
@@ -48,6 +58,13 @@
                         <i class="fas fa-shopping-cart"></i>
                     </a>
                 </li>
+
+                <li class="nav-item">
+                    <a href="{{ route('register') }}" class="nav-link">
+                        <i class="fa-solid fa-right-to-bracket"></i>
+                    </a>
+                </li>
+
                 <li class="nav-item ps-2">
                     <a href="{{ route('profile.edit') }}" class="nav-link">
                         <i class="fa-solid fa-user"></i>
